@@ -1,0 +1,21 @@
+name: 'paths test'
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'dir/**'
+      - '.github/workflows/flow.yaml'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/flow.yaml'
+      - 'dir/**'
+
+jobs:
+  stub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: find 
