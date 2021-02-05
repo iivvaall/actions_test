@@ -7,10 +7,6 @@ name: fit-netology-leads
         description: mlflow instance to use
         required: false
         default: prod
-      start_date:
-        description: start_date
-        required: false
-        default: 2020-09-01
 
 jobs:
   execute_job:
