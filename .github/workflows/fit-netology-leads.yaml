@@ -1,8 +1,5 @@
 name: "zzz"
 
-env:
-  SERVER: production
-
 jobs:
   execute_job:
     runs-on: ubuntu-latest
