@@ -1,8 +1,9 @@
 name: fit-netology-leads
 
+
 env:
-  IMAGE: "registry.junglejobs.ru/sever/models"
-  JOB: fit_netology_leads
+  __IMAGE__: "registry.junglejobs.ru/sever/models"
+  __JOB__: fit_netology_leads
 
 jobs:
   execute_job:
