@@ -1,0 +1,52 @@
+name: fit-netology-leads
+
+'on':
+  workflow_dispatch:
+    inputs:
+      flow:
+        description: mlflow instance to use
+        required: false
+        default: prod
+      start_date:
+        description: start_date
+        required: false
+        default: 2020-09-01
+      stop_date:
+        description: stop_date
+        required: false
+        default: 2020-10-31
+
+env:
+  IMAGE: "registry.junglejobs.ru/sever/models"
+  JOB: fit_netology_leads
+
+jobs:
+  execute_job:
+    runs-on: K8S
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate build number
+        uses: einaregilsson/build-number@v3
+        with:
+          token: ${{secrets.github_token}}
+
+      - name: setup runner env
+        run: |
+            echo "IMAGE_TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
+            echo "JOBFILE=./.github/k8s_templates/job_$JOB.yaml" >> $GITHUB_ENV
+            echo "K8S_LABEL=${JOB//_/-}-${BUILD_NUMBER}" >> $GITHUB_ENV
+            echo "FLOW=${{github.event.inputs.flow}}" >> $GITHUB_ENV
+            echo "START=${{github.event.inputs.start_date}}" >> $GITHUB_ENV
+            echo "STOP=${{github.event.inputs.stop_date}}" >> $GITHUB_ENV
+
+      - name: spawn job
+        run: envsubst < "$JOBFILE" | kubectl apply -f -
+
+      - name: wait and delete
+        run: |
+            while [[ $(kubectl -n mllab get pods -l k8s-app=$K8S_LABEL -o jsonpath='{range .items[*]}{.status.phase}{"\n"}{end}') != "Succeeded" ]]; do
+            echo "waiting for pod" && sleep 60;
+            done
+
+            envsubst < "$JOBFILE" | kubectl delete -f -
