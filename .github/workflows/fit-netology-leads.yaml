@@ -1,5 +1,8 @@
 name: fit-netology-leads
 
+env: {}
+
+
 jobs:
   execute_job:
     runs-on: ubuntu-latest
