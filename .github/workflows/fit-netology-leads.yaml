@@ -11,6 +11,10 @@ name: fit-netology-leads
         description: start_date
         required: false
         default: '2020-09-01'
+      stop:
+        description: stop_date
+        required: false
+        default: '2020-10-31'
 
 
 jobs:
