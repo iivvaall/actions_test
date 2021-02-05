@@ -16,6 +16,10 @@ name: fit-netology-leads
         required: false
         default: '2020-10-31'
 
+env:
+  IMAGE: "registry.junglejobs.ru/sever/models"
+  JOB: fit_netology_leads
+
 
 jobs:
   execute_job:
