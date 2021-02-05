@@ -5,7 +5,6 @@ name: fit-netology-leads
 jobs:
   env:
     XXX: "registry.junglejobs.ru/sever/models"
-    YYY: fit_netology_leads
   execute_job:
     runs-on: ubuntu-latest
     steps:
