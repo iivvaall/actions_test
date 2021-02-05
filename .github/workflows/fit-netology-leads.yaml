@@ -1,21 +1,5 @@
 name: fit-netology-leads
 
-'on':
-  workflow_dispatch:
-    inputs:
-      flow:
-        description: mlflow instance to use
-        required: false
-        default: prod
-      start_date:
-        description: start_date
-        required: false
-        default: 2020-09-01
-      stop_date:
-        description: stop_date
-        required: false
-        default: 2020-10-31
-
 env:
   IMAGE: "registry.junglejobs.ru/sever/models"
   JOB: fit_netology_leads
