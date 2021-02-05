@@ -3,8 +3,6 @@ name: fit-netology-leads
 
 
 jobs:
-  env:
-    XXX: "registry.junglejobs.ru/sever/models"
   execute_job:
     runs-on: ubuntu-latest
     steps:
