@@ -38,7 +38,7 @@ jobs:
             echo "JOBFILE=./.github/k8s_templates/job_$JOB.yaml" >> $GITHUB_ENV
             echo "K8S_LABEL=${JOB//_/-}-${BUILD_NUMBER}" >> $GITHUB_ENV
             echo "FLOW=${{github.event.inputs.flow}}" >> $GITHUB_ENV
-            echo "START=${{github.event.inputs.start_date}}" >> $GITHUB_ENV
+            echo "START=${{github.event.inputs.start}}" >> $GITHUB_ENV
             echo "STOP=${{github.event.inputs.stop}}" >> $GITHUB_ENV
 
       - name: spawn job
