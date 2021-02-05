@@ -4,4 +4,4 @@ jobs:
   execute_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $SERVER
+      - run: echo xxx
