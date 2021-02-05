@@ -9,4 +9,4 @@ jobs:
   execute_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo xxx
+      - run: echo $x
