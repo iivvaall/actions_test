@@ -1,3 +1,5 @@
+name: zzz
+
 jobs:
   execute_job:
     runs-on: ubuntu-latest
